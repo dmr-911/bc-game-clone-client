@@ -2,26 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+input {
+  border: 2px solid gray;
+  background-color: transparent !important;
+}
+
+input:focus {
+  background: transparent !important;
+  border: 2px solid #3BC117;
+  /* Change the border color when focused */
+  outline: none;
+  /* Remove the default outline */
+}
+
+
+.login-button {
+  background-color: #1d803ab3;
+  background-image: conic-gradient(from 1turn, rgba(88, 175, 16, 1), rgba(29, 128, 58, 1));
+}
+
+.login-button:hover {
+  background: conic-gradient(from 90deg at 50% 50%, #5de13b -90deg, #28a700 269.96deg, #5de13b 270deg, #28a700 629.96deg);
+}
+
+
+.cover-img {
+  position: absolute;
+  /* top: 0; */
+  animation: moveUpDown 3s infinite linear;
+}
+
+@keyframes moveUpDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  50% {
+    transform: translateY(-20%);
+  }
 }
